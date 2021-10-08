@@ -17,6 +17,8 @@ public class MovieMain {
         
         ratingViewer.setUserViewer(userViewer);
         
+        //실행
+        userViewer.showIndex();
     }
 
 }

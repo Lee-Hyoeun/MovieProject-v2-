@@ -43,6 +43,7 @@ public class UserViewer {
     
     public void setRatingViewer(RatingViewer ratingViewer) {
         this.ratingViewer = ratingViewer;
+        this.ratingViewer.setScanner(scanner);
     }
     
     //인덱스 화면
@@ -61,6 +62,7 @@ public class UserViewer {
                 //정상적으로 로그인 됬는지 아닌지 체크
                 if(logIn != null) {
                     movieViewer.setLogIn(logIn);
+                    ratingViewer.setLogIn(logIn);
                     
                     //두가지 경우, 1로그인한사람이 관리자일경우 2아닌경우
                     if(logIn.getRank() == RANK_ADMIN) {

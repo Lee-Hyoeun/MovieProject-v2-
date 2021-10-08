@@ -21,6 +21,10 @@ public class RatingViewer {
     private final int RATING_MIN = 1;
     private final int RATING_MAX = 5;
     
+    public RatingViewer() {
+        ratingController = new RatingController();
+    }
+    
     public void setUserViewer(UserViewer userViewer) {
         this.userViewer = userViewer;
     }
