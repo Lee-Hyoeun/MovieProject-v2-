@@ -46,7 +46,7 @@ public class RatingController {
         ArrayList<RatingDTO> temp = new ArrayList<>();
 
         for (RatingDTO r : list) {
-            if (r.getMovieId() == movieId && userViewer.selectRankById(r.getWriterId() == rank)) {
+            if (r.getMovieId() == movieId && userViewer.selectRankById(r.getWriterId()) == rank) {
                 temp.add(new RatingDTO(r));
             }
 
