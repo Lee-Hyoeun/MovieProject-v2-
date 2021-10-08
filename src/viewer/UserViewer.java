@@ -27,6 +27,23 @@ public class UserViewer {
        
     }
     
+    //의존성 주입을 위한 셋터
+    public void setMovieViewer(MovieViewer movieViewer) {
+        this.movieViewer = movieViewer;
+    }
+    
+    public void setTheaterViewer(TheaterViewer theaterViewer) {
+        this.theaterViewer = theaterViewer;
+    }
+    
+    public void setShowViewer(showViewer showViewer) {
+        this.showViewer = showViewer;
+    }
+    
+    public void setRatingViewer(RatingViewer ratingViewer) {
+        this.ratingViewer = ratingViewer;
+    }
+    
     //인덱스 화면
     public void showIndex() {
         String message = new String("1.회원가입  2.로그인  3.종료");
