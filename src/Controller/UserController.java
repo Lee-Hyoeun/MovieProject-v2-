@@ -17,16 +17,7 @@ public class UserController {
         list = new ArrayList<>();
         nextId = 1;
 
-    }
-
-    // 입력메소드
-    public void insert(UserDTO u) {
-        u.setId(nextId);
-        u.setRank(RANK_GENERAL); // 일반가입자는 일반등급유저
-
-        list.add(u);
-        
-       //테스트 샘플 사람들
+      //테스트 샘플 사람들
         UserDTO u1 = new UserDTO();
         u1.setId(nextId++);
         u1.setUsername("a1");
@@ -51,7 +42,14 @@ public class UserController {
         u1.setRank(RANK_ADMIN);
         list.add(u1);
         
-              
+    }
+
+    // 입력메소드
+    public void insert(UserDTO u) {
+        u.setId(nextId);
+        u.setRank(RANK_GENERAL); // 일반가입자는 일반등급유저
+
+        list.add(u);  
         
     }
 
@@ -87,8 +85,7 @@ public class UserController {
     // 리턴하는 메소드
     public UserDTO auth(String username, String password) {
         for(UserDTO u : list) {
-            if(u.getUsername().equalsIgnoreCase(username) &&
-                    u.getPassword().equals(password)) {
+            if(u.getUsername().equalsIgnoreCase(username) && u.getPassword().equals(password)) {
                 
                 return new UserDTO(u); //select문이랑 비슷하게 작성
                 

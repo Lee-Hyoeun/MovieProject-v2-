@@ -262,7 +262,7 @@ public class UserViewer {
         message = new String("새로운 비밀번호를 입력해주세요.");
         u.setPassword(ScannerUtil.nextLine(scanner, message));
         
-        message = new String("새로운 닉네임을 입력해주세ㅛ.");
+        message = new String("새로운 닉네임을 입력해주세요.");
         u.setNickname(ScannerUtil.nextLine(scanner, message));
         
         userController.update(u);
@@ -272,7 +272,7 @@ public class UserViewer {
     
     //탈퇴 메소드
     private void withdrawl(int id) {
-        String message = new String("정말로 탈퇴? Y/N");
+        String message = new String("정말로 탈퇴하시겠습니까? Y/N");
         String yesNo = ScannerUtil.nextLine(scanner, message);
         
         if(yesNo.equalsIgnoreCase("Y")) {

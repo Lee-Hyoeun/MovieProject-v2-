@@ -59,9 +59,10 @@ public class UserDTO {
     
     public UserDTO(UserDTO u) {
         id = u.id; //일치하는 이름이 없어서 this.id = u.id 이렇게 안써도 됨
-        username = new String(username);
-        password = new String(password);
-        nickname = new String(nickname);
+        username = new String(u.username);
+        password = new String(u.password);
+        nickname = new String(u.nickname);
+        rank = u.rank;
 
     }
 
