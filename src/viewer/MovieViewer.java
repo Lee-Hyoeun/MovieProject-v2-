@@ -149,6 +149,53 @@ public class MovieViewer {
         }
         
     }
+    
+    
+    private void update(int id) {
+        MovieDTO m = movieController.selectOne(id);
+        
+        String message;
+        
+        message = new String("새로운 제목을 입력해주세요.");
+        m.setTitle(ScannerUtil.nextLine(scanner, message));
+        
+        message = new String("새로운 줄거리를 입력해주세요.");
+        m.setSummary(ScannerUtil.nextLine(scanner, message));
+        
+        message = new String("새로운 등급을 입력해주세요.");
+        
+        movieController.update(m);
+        printOne(id);
+    }
+    
+    private void delete(int id) {
+        String message = new String("정말로 삭제하시겠습니까? Y/N");
+        String yesNo = ScannerUtil.nextLine(scanner, message);
+        
+        if(yesNo.equalsIgnoreCase("Y")) {
+            movieController.delete(id);
+            printList();
+        }else {
+            printOne(id);
+        }
+        
+    }
+    
+    private void add() {
+        MovieDTO m = new MovieDTO();
+        
+        String message;
+        
+        message = new String("제목을 입력해주세요.");
+        m.setTitle(ScannerUtil.nextLine(scanner, message));
+        
+        message = new String("줄거리를 입력해주세요.");
+        m.setSummary(ScannerUtil.nextLine(scanner, message));
+        
+        message = new String("등급을 입력해주세요.");
+        
+        movieController.insert(m);
+    }
 
 
 }
