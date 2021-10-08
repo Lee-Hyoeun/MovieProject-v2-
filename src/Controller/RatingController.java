@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 
 import model.RatingDTO;
+import viewer.UserViewer;
 
 public class RatingController {
     
@@ -27,9 +28,36 @@ public class RatingController {
     public ArrayList<RatingDTO> selectByMovieId(int movieId){
         ArrayList<RatingDTO> temp = new ArrayList<>();
         
+        for(RatingDTO r : list) {
+            if(r.getMovieId() == movieId) {
+                temp.add(new RatingDTO(r));
+            }
+        }
         
         return temp;
     }
+    
+    
+    //특정 회원 등급의 평점 리스트를 리턴하는 메소드
+//    private int writerId;  //회원의 번호값만 가지고 있음-> 이것만가지고 회원의 등급을 알아내야됨 
+    //파라미터로 받아오는 방법으로
+    //userController와 RatingCoontroller의 중간다리 역할을 하는 메소드를
+    //UserViewer에 작성 selectRankById 메소드
+    //여기서 받아오면 아래 메소드에서 특정 회원 등급의 평점 리스트를 리턴
+    public ArrayList<RatingDTO> selectByUserRank(UserViewer userViewer, int movieId, int rank){
+        ArrayList<RatingDTO> temp = new ArrayList<>();
+        
+        for(RatingDTO r : list) {
+            if(r.getMovieId() == movieId && userViewer.selectRankById(r.getWriterId() == rank)){
+                temp.add(new RatingDTO(r));
+            }
+            
+        }
+        
+        return temp;
+    }
+
+    
     
     //파라미터로 들어온 리스트의 평점 평균을 계싼하여 리턴하는 메소드
     

@@ -296,6 +296,12 @@ public class UserViewer {
                 
     }
     
+    // 해당 회원번호를 가진 회원의
+    // 회원 등급을 리턴하는 메소드
+    public int selectRankById(int id) {
+        return userController.selectOne(id).getRank();
+    }
+    
     
 
 }

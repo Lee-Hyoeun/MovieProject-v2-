@@ -2,7 +2,7 @@ package model;
 
 public class RatingDTO {
     private int id;
-    private int writerId;
+    private int writerId;   //회원의 번호값만 가지고 있음-> 이것만가지고 회원의 등급을 알아내야됨 
     private int movieId;
     private int rate;
     private String review;
