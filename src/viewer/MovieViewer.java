@@ -139,13 +139,13 @@ public class MovieViewer {
             int userChoice = ScannerUtil.nextInt(scanner, message, 1, 5);
             
             if(userChoice == 1) {
-                ratingViewer.printList(CATEGORY_ALL);
+                ratingViewer.printList(id, CATEGORY_ALL);
                 
             } else if(userChoice == 2) {
-                ratingViewer.printList(CATEGORY_CRITIC);
+                ratingViewer.printList(id, CATEGORY_CRITIC);
                                 
             } else if(userChoice == 3) {
-                ratingViewer.printList(CATEGORY_GENERAL);
+                ratingViewer.printList(id, CATEGORY_GENERAL);
                 
             } else if(userChoice == 4) {
                 
