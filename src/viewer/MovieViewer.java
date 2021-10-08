@@ -148,6 +148,7 @@ public class MovieViewer {
                 ratingViewer.printList(id, CATEGORY_GENERAL);
                 
             } else if(userChoice == 4) {
+                ratingViewer.add(id);
                 
                 
             } else if(userChoice == 5) {
