@@ -30,6 +30,7 @@ public class UserViewer {
     //의존성 주입을 위한 셋터
     public void setMovieViewer(MovieViewer movieViewer) {
         this.movieViewer = movieViewer;
+        this.movieViewer.setScanner(scanner); //이렇게 적어주면 일일히 만들어? 줄 필요 없다고,,
     }
     
     public void setTheaterViewer(TheaterViewer theaterViewer) {
