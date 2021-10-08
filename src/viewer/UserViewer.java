@@ -12,6 +12,7 @@ public class UserViewer {
     private UserDTO logIn;
     
     private final int RANK_ADMIN = 1;
+    private final int RANK_CRITIC = 2;
     
     //필드를 초기화할 생성자
     public UserViewer() {
@@ -170,6 +171,78 @@ public class UserViewer {
                  logIn = null;
                  break;
              }
+        }
+    }
+    
+    private void printOne(int id) {
+        UserDTO u = userController.selectOne(id);
+        
+        //회원등급 숫자값을 문자로 바꾸는 코드
+        String rank;
+        
+        if(u.getRank() == RANK_ADMIN) {
+            rank = new String("관리자");
+        } else if(u.getRank() == RANK_CRITIC) {
+            rank = new String("평론가");
+        } else {
+            rank = new String("일반 회원");
+        }
+        
+        
+        System.out.println("===================");
+        System.out.println(u.getNickname()+"님의 정보");
+        System.out.println("===================");
+        System.out.println("아이디: "+u.getUsername());
+        System.out.println("닉네임: "+u.getNickname());
+        System.out.println("회원등급: " + rank);
+        //회원등급은 int숫자값으로 가지고 있음! 근데 위에서 if문으로 바꿔서 String으로 출력OK!
+        System.out.println("===================");
+        
+        String message = new String("1.회원정보수정 2.회원탈퇴 3.뒤로가기");
+        int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
+        
+        if(userChoice == 1) {
+            //회원 정보 수정 메소드 실행
+            update(id);
+            
+        } else if(userChoice == 2) {
+            //회원 탈퇴 메소드 실행
+            withdrawl(id);
+        }
+    }
+    
+    
+    //회원 정보 수정 메소드
+    private void update(int id) {
+        UserDTO u = userController.selectOne(id);
+        
+        String message;
+        
+        message = new String("새로운 비밀번호를 입력해주세요.");
+        u.setPassword(ScannerUtil.nextLine(scanner, message));
+        
+        message = new String("새로운 닉네임을 입력해주세ㅛ.");
+        u.setNickname(ScannerUtil.nextLine(scanner, message));
+        
+        userController.update(u);
+        printOne(id);
+        
+    }
+    
+    //탈퇴 메소드
+    private void withdrawl(int id) {
+        String message = new String("정말로 탈퇴? Y/N");
+        String yesNo = ScannerUtil.nextLine(scanner, message);
+        
+        if(yesNo.equalsIgnoreCase("Y")) {
+            userController.delete(id);
+            logIn = null;// 로그인 객체를 없애기 널로 만들어서
+            // RatingViewer의 deleteByWriterId() 실행
+            //이 회원이 가진 평점 기록도 모두 삭제되도록!
+            System.out.println("회원 탈퇴가 완료되었습니다.");
+            
+        } else {
+            printOne(id);
         }
     }
     
