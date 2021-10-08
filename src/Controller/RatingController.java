@@ -16,8 +16,22 @@ public class RatingController {
     
     
     // 평점을 list에 추가하는 메소드
+    //리스트에 추가만 하는 기능!
+    public void add(RatingDTO r) {
+        r.setId(nextId++);
+        
+        list.add(r);
+    }
     
     //특정 영화의 평점 리스트를 리턴하는 메소드
+    public ArrayList<RatingDTO> selectByMovieId(int movieId){
+        ArrayList<RatingDTO> temp = new ArrayList<>();
+        
+        
+        return temp;
+    }
+    
+    //파라미터로 들어온 리스트의 평점 평균을 계싼하여 리턴하는 메소드
     
     //특정 영화의 평점을 모두 삭제하는 메소드
     
