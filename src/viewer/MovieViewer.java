@@ -5,20 +5,30 @@ import java.util.Scanner;
 
 import Controller.MovieController;
 import model.MovieDTO;
+import model.UserDTO;
 import util.ScannerUtil;
 
 public class MovieViewer {
     private MovieController movieController; // 따로 만들어서 주입하기보다 아래에 그냥 생성자 만들기
     private Scanner scanner;
+    private UserDTO logIn;
+    
+    private final int RANK_ADMIN = 1;
 
     public MovieViewer() {
         movieController = new MovieController();
-    }
+    }    
 
     // 스캐너를 외부에서 받아서 처리할 수 있게 하는 세터메소드
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
+    
+    public void setLogIn(UserDTO logIn2) {
+        this.logIn = null;
+        
+    }
+
 
     public void showAdminMenu() {
         String message = new String("1.영화목록보기 2.새로운영화추가 3.뒤로가기");
@@ -83,7 +93,62 @@ public class MovieViewer {
         System.out.println();
 
         // 여기서 두가지 선택. 관리자 일떄 수정,삭제 가능. 관리자가 아니면 평점보고 각각에 기능이 생기도록
-        // 일단 로그인한 사람이 
+        // 일단 로그인한 사람이 누구인지 LogIn
+//         위에   private UserDTO logIn;
+//        public void setLogIn(UserDTO logIn2) {
+//            this.logIn = null;
+//            
+//        }추가 해줘서 이제 앎.
+        
+        String message;
+        
+        if(logIn.getRank() == RANK_ADMIN) {
+            //로그인한 회원이 관리자이므로
+            //관리자용 코드 실행
+            message = new String("1.수정 2.삭제 3.뒤로가기");
+            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
+            
+            if(userChoice == 1) {
+                //영화 수정 메소드 실행
+                update(id);
+            } else if(userChoice == 2) {
+                //영화 삭제 메소드 실행
+                delete(id);
+            } else if(userChoice == 3) {
+                // 뒤로가기실행-> 영화목록보기로 돌아감
+                // 영화목록보기 메소드 실행
+                printList();
+            }
+        }else {//로그인한 회원이 관리자가 아니므로
+            //비관리자용 코드 실행
+            
+            //전체 평점 출력 -> 메소드가 각각 어떻게 출력되고 그렇게 출력되는 이유는 알필요 없음(객체지향)
+            // =>평점뷰어로 돌리기
+            message = new String("1.전체평점출력 2.평론가평점출력 3.일반회원평점출력 4.평점등록 5.뒤로가기");
+            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 5);
+            
+            if(userChoice == 1) {
+                
+                
+            } else if(userChoice == 2) {
+                
+                
+            } else if(userChoice == 3) {
+                
+                
+            } else if(userChoice == 4) {
+                
+                
+            } else if(userChoice == 5) {
+                // 뒤로가기실행-> 영화목록보기로 돌아감
+                // 영화목록보기 메소드 실행
+                printList();
+            }
+            
+            
+        }
+        
     }
+
 
 }
