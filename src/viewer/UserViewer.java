@@ -11,6 +11,12 @@ public class UserViewer {
     private Scanner scanner;
     private UserDTO logIn;
     
+    //네개 필드 추가
+    private MovieViewer movieViewer;
+    private TheaterViewer theaterViewer;
+    private showViewer showViewer;
+    private RatingViewer ratingViewer;
+    
     private final int RANK_ADMIN = 1;
     private final int RANK_CRITIC = 2;
     
@@ -165,15 +171,24 @@ public class UserViewer {
                  
              } else if(userChoice == 3) {
                  //개별 회원 정보 보기 메소드 실행
+                 printOne(logIn.getId()); //로그인한 회원번호로 내정보보기 메소드를 실행
                  
              } else if(userChoice == 4) {
                  System.out.println("로그아웃되셨습니다.");
-                 logIn = null;
-                 break;
+                 logIn = null; //널로 초기화            
+                 //break; //로그아웃 널포인트로 에러날수 잇어서 아래와 같이 한 만약을 둬서 break실행
              }
+            
+            if(logIn == null) {
+                break;
+            }
+            
+            
+            
         }
     }
     
+    //3. 내 정보보기 메소드
     private void printOne(int id) {
         UserDTO u = userController.selectOne(id);
         
@@ -244,6 +259,14 @@ public class UserViewer {
         } else {
             printOne(id);
         }
+    }
+    
+    // 해당 회원 번호를 가진 회원의
+    // 닉네임만 출력하는 메소드
+    public void printNicknameById(int id) {
+        UserDTO u = userController.selectOne(id);
+        System.out.println(u.getNickname());
+                
     }
     
     
