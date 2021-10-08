@@ -159,7 +159,7 @@ public class UserViewer {
                 
              } else if(userChoice == 2) {
                  //TheaterViewer의 showAdminMenu() 실행
-                 theaterViewer.showAdminMenu();
+                 theaterViewer.showAdminMenu(); //객체 지향의 강점. 여기서 잘몰라도 됨. 그냥 객체만 영끌해서 씀.
                  
              } else if(userChoice == 3) {
                  //ShowViewer의 showAdminMenu() 실행
