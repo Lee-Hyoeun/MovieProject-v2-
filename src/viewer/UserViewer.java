@@ -14,7 +14,7 @@ public class UserViewer {
     //네개 필드 추가
     private MovieViewer movieViewer;
     private TheaterViewer theaterViewer;
-    private showViewer showViewer;
+    private ShowViewer showViewer;
     private RatingViewer ratingViewer;
     
     private final int RANK_ADMIN = 1;
@@ -36,7 +36,7 @@ public class UserViewer {
         this.theaterViewer = theaterViewer;
     }
     
-    public void setShowViewer(showViewer showViewer) {
+    public void setShowViewer(ShowViewer showViewer) {
         this.showViewer = showViewer;
     }
     
