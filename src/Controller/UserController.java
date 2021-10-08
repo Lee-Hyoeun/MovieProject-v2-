@@ -57,9 +57,32 @@ public class UserController {
 
     // 사용자로부터 입력받은 username과 password가 일치하는 회원을
     // 리턴하는 메소드
+    public UserDTO auth(String username, String password) {
+        for(UserDTO u : list) {
+            if(u.getUsername().equalsIgnoreCase(username) &&
+                    u.getPassword().equals(password)) {
+                
+                return new UserDTO(u); //select문이랑 비슷하게 작성
+                
+            }
+        }
+        
+        return null;
+    }
 
     // 회원정보 수정 메소드
+    public void update(UserDTO u) {
+        int index = list.indexOf(u);
+        list.set(index, u);
+        
+    }
 
     // 회원 정보 삭제 메소드
+    public void delete(int id) {
+        UserDTO u = new UserDTO();
+        u.setId(id);
+        
+        list.remove(u);
+    }
 
 }
