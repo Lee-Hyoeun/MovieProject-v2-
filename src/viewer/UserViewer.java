@@ -11,6 +11,8 @@ public class UserViewer {
     private Scanner scanner;
     private UserDTO logIn;
     
+    private final int RANK_ADMIN = 1;
+    
     //필드를 초기화할 생성자
     public UserViewer() {
         userController = new UserController();
@@ -36,9 +38,11 @@ public class UserViewer {
                     //두가지 경우, 1로그인한사람이 관리자일경우 2아닌경우
                     if(logIn.getRank() == RANK_ADMIN) {
                         //관리자 메뉴실행
+                        showAdminMenu();
                         
                     } else {
                         //비관리자 메뉴 실행
+                        showNonAdminMenu();
                         
                     }
                 }
@@ -113,10 +117,62 @@ public class UserViewer {
             u = userController.auth(username, password);
             
         }
+        
+        logIn = u; //UserDTO에 u 로그인 정보들어감    
+    }
     
     
+    //관리자용 메인화면
+    //로그인이 관리자일 경우 나오는 인덱스 메소드
+    private void showAdminMenu() {
+        String message = new String("1.영화관리 2.극장관리 3.상영정보관리 4.로그아웃");
+        
+        while(true) {
+            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
+            if(userChoice == 1) {
+                // MovieViewer의 showAdminMenu() 실행 //클래스 필드 만들어서 의존성 주입하는 방식!
+                
+                
+             } else if(userChoice == 2) {
+                 //TheaterViewer의 showAdminMenu() 실행
+                 
+             } else if(userChoice == 3) {
+                 //ShowViewer의 showAdminMenu() 실행
+                 
+             } else {
+                 System.out.println("로그아웃되셨습니다.");
+                 logIn = null;
+                 break;
+             }
+        }
     
     }
+    
+    //비관리자용 메인화면
+    //로그인이 관리자가 아닌경우 나오는 인덱스 메소드
+    private void showNonAdminMenu() {
+        String message = new String("1.영화목록보기 2.극장목록보기 3.내정보보기 4.로그아웃");
+        
+        while(true) {
+            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
+            if(userChoice == 1) {
+                // MovieViewer의 printList() 실행 //클래스 필드 만들어서 의존성 주입하는 방식!
+                
+                
+             } else if(userChoice == 2) {
+                 //TheaterViewer의 printList() 실행
+                 
+             } else if(userChoice == 3) {
+                 //개별 회원 정보 보기 메소드 실행
+                 
+             } else if(userChoice == 4) {
+                 System.out.println("로그아웃되셨습니다.");
+                 logIn = null;
+                 break;
+             }
+        }
+    }
+    
     
 
 }
