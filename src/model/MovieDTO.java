@@ -43,6 +43,19 @@ public class MovieDTO {
         return false;
     }
     
+    public MovieDTO() {
+        id = 0;
+        title = new String();
+        summary = new String();
+        filmGrade = 0;
+    }
+    
+    public MovieDTO(MovieDTO m) {
+        id = m.id;
+        title = new String(m.title);
+        summary = new String(m.summary);
+        filmGrade = m.filmGrade;
+    }
     
 
 }
