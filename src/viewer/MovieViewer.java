@@ -12,8 +12,15 @@ public class MovieViewer {
     private MovieController movieController; // 따로 만들어서 주입하기보다 아래에 그냥 생성자 만들기
     private Scanner scanner;
     private UserDTO logIn;
+    private RatingViewer ratingViewer;
     
     private final int RANK_ADMIN = 1;
+    
+    // 평점을 전체, 평론가, 일반관람객용으로 각 출력해줄 상수
+    private final int CATEGORY_ALL = 1;
+    private final int CATEGORY_CRITIC = 2;
+    private final int CATEGORY_GENERAL = 3;
+
 
     public MovieViewer() {
         movieController = new MovieController();
@@ -24,9 +31,13 @@ public class MovieViewer {
         this.scanner = scanner;
     }
     
-    public void setLogIn(UserDTO logIn2) {
-        this.logIn = null;
+    public void setLogIn(UserDTO logIn) {
+        this.logIn = logIn;
         
+    }
+    
+    public void setRatingViewer(RatingViewer ratingViewer) {
+        this.ratingViewer = ratingViewer;
     }
 
 
@@ -123,18 +134,18 @@ public class MovieViewer {
             //비관리자용 코드 실행
             
             //전체 평점 출력 -> 메소드가 각각 어떻게 출력되고 그렇게 출력되는 이유는 알필요 없음(객체지향)
-            // =>평점뷰어로 돌리기
+            // =>평점뷰어로 돌리기 여기서는 그냥 평점 출력만 볼수 잇도록!
             message = new String("1.전체평점출력 2.평론가평점출력 3.일반회원평점출력 4.평점등록 5.뒤로가기");
             int userChoice = ScannerUtil.nextInt(scanner, message, 1, 5);
             
             if(userChoice == 1) {
-                
+                ratingViewer.printList(CATEGORY_ALL);
                 
             } else if(userChoice == 2) {
-                
-                
+                ratingViewer.printList(CATEGORY_CRITIC);
+                                
             } else if(userChoice == 3) {
-                
+                ratingViewer.printList(CATEGORY_GENERAL);
                 
             } else if(userChoice == 4) {
                 

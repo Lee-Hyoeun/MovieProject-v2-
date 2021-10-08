@@ -7,4 +7,9 @@ public class RatingViewer {
         
     }
 
+    public void printList(int cATEGORY_ALL) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
