@@ -25,6 +25,34 @@ public class UserController {
         u.setRank(RANK_GENERAL); // 일반가입자는 일반등급유저
 
         list.add(u);
+        
+       //테스트 샘플 사람들
+        UserDTO u1 = new UserDTO();
+        u1.setId(nextId++);
+        u1.setUsername("a1");
+        u1.setPassword("1");
+        u1.setNickname("관리자");
+        u1.setRank(RANK_ADMIN);
+        list.add(u1);
+        
+        u1 = new UserDTO();
+        u1.setId(nextId++);
+        u1.setUsername("c1");
+        u1.setPassword("1");
+        u1.setNickname("평론가");
+        u1.setRank(RANK_CRITIC);
+        list.add(u1);
+        
+        u1 = new UserDTO();
+        u1.setId(nextId++);
+        u1.setUsername("g1");
+        u1.setPassword("1");
+        u1.setNickname("일반회원 1");
+        u1.setRank(RANK_ADMIN);
+        list.add(u1);
+        
+              
+        
     }
 
     // 개별 회원을 불러오는 메소드
