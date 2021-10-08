@@ -155,13 +155,15 @@ public class UserViewer {
             int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
             if(userChoice == 1) {
                 // MovieViewer의 showAdminMenu() 실행 //클래스 필드 만들어서 의존성 주입하는 방식!
-                
+                movieViewer.showAdminMenu();
                 
              } else if(userChoice == 2) {
                  //TheaterViewer의 showAdminMenu() 실행
+                 theaterViewer.showAdminMenu();
                  
              } else if(userChoice == 3) {
                  //ShowViewer의 showAdminMenu() 실행
+                 showViewer.showAdminMenu();
                  
              } else {
                  System.out.println("로그아웃되셨습니다.");
@@ -181,10 +183,12 @@ public class UserViewer {
             int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
             if(userChoice == 1) {
                 // MovieViewer의 printList() 실행 //클래스 필드 만들어서 의존성 주입하는 방식!
-                
+                movieViewer.printList();
+
                 
              } else if(userChoice == 2) {
                  //TheaterViewer의 printList() 실행
+                 theaterViewer.printList();
                  
              } else if(userChoice == 3) {
                  //개별 회원 정보 보기 메소드 실행
@@ -271,7 +275,10 @@ public class UserViewer {
             logIn = null;// 로그인 객체를 없애기 널로 만들어서
             // RatingViewer의 deleteByWriterId() 실행
             //이 회원이 가진 평점 기록도 모두 삭제되도록!
+            ratingViewer.deleteByWriterId(id);
+            
             System.out.println("회원 탈퇴가 완료되었습니다.");
+            
             
         } else {
             printOne(id);
